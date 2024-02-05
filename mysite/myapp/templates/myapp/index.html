@@ -1,34 +1,37 @@
 <!DOCTYPE html>
+{% extends "myapp/base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <nav>
-        <div>
-            <div>
+
+{% block content %}
+<nav class="bg-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex-justify-between">
+            <div class="flex space-x-7">
                 <div>
-                    <div>
-                        <img class="h-8 w-8" src="{% static 'myapp/images/shop.png' %}" />
-                    </div>
+                    <a href="#" class="flex items-center px-2 py-4">
+                    <img class="h-8 w-8" src="{% static 'myapp/images/shop.png' %}" alt="logo" />
+                    <span class="text-xl">Pro shop</span>
+                    </a>
+                </div>
+                <div class="items-center flex space-x-1">
+                    <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500">Home</a>
+                    <a href="#" class="py-4 px-2 text-gray-500 font-semibold">About</a>
+                    <a href="#" class="py-4 px-2 text-gray-500 font-semibold">Contacts</a>
                 </div>
             </div>
         </div>
-    </nav>
-    <h2>
+    </div>
+</nav>
+<h2>
 <!--        <a href="/myapp/index/{{item.id}}/">{{item.name}}</a>-->
-        <table border="1">
-            {% for item in items %}
-                <tr>
-                    <td width="150"><a href="{% url 'myapp:detail' item.id %}">{{item.name}}</a></td>
-                    <td width="150">{{item.prise}}</td>
-                    <td width="150">{{item.description}}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </h2>
-</body>
-</html>
+    <table border="1">
+        {% for item in items %}
+        <tr>
+            <td width="150"><a href="{% url 'myapp:detail' item.id %}">{{item.name}}</a></td>
+            <td width="150">{{item.prise}}</td>
+            <td width="150">{{item.description}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</h2>
+{% endblock content %}
